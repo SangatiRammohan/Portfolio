@@ -19,7 +19,7 @@ Welcome to my personal portfolio website! This site showcases my projects, skill
 
 ## 📷 Preview
 
-![Portfolio Screenshot](src/assets/porfolio.png)
+<!-- ![Portfolio Screenshot](src/assets/porfolio.png) -->
 
 
 > *(Make sure to place your image in a folder named `images` or update the path accordingly.)*
