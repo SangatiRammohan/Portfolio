@@ -46,16 +46,16 @@ const portfolioData = {
     {
       id: 2,
       name: "City Pulse ( city guide for disability people)",
-      description: "A clone of the popular e-commerce platform Flipkart with similar functionality.",
+      description: "City Pulse is an inclusive city guide designed to help people with disabilities navigate urban spaces with accessibility information and resources.",
       image: City,
       techStack: ["React", "Node.js", "MongoDB", "Express"],
       demoLink: "#",
-      githubLink: ""
+      githubLink: "#"
     },
     {
       id: 3,
       name: "Photo studio website",
-      description: "A food delivery application clone with restaurant listings and ordering system.",
+      description: "A photo studio website showcases photography services, portfolio, pricing, and booking options, providing clients with a seamless online experience.",
       image: PhotoStudio,
       techStack: ["React", "CSS", "ReactBootstap"],
       demoLink: "https://photo-studio-git-main-rammohans-projects-dffdb287.vercel.app/",
@@ -64,11 +64,11 @@ const portfolioData = {
     {
       id: 4,
       name: "Polycab - Task Management",
-      description: "A streaming platform clone with movie listings and preview functionality.",
+      description: "Polycab Task Management streamlines task assignment, tracking, and collaboration across teams to enhance productivity, accountability, and workflow efficiency.",
       image: Polycab,
       techStack: ["React", "Python", "DJango", "DJangoREST Framework"],
       demoLink: "#",
-      githubLink: ""
+      githubLink: "#"
     },
     {
       id: 5,

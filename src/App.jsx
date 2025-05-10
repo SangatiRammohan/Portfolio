@@ -16,11 +16,8 @@ function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    // Simulate data loading or fetch actual data
     const loadData = async () => {
       try {
-        // If you have actual API calls, replace this with those
-        // For demo purposes, using timeout with local data
         setTimeout(() => {
           setData(portfolioData);
           setIsLoading(false);
