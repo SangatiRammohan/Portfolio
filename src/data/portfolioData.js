@@ -54,8 +54,8 @@ const portfolioData = {
       description: "A food delivery application clone with restaurant listings and ordering system.",
       image: "/api/placeholder/400/320",
       techStack: ["React", "CSS", "ReactBootstap"],
-      demoLink: "#",
-      githubLink: ""
+      demoLink: "https://photo-studio-git-main-rammohans-projects-dffdb287.vercel.app/",
+      githubLink: "https://github.com/SangatiRammohan/Photo-Studio"
     },
     {
       id: 4,
