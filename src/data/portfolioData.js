@@ -1,5 +1,5 @@
 // src/data/portfolioData.js
-import CameraImg from '../assets/collisionamera.png';
+import CameraImg from '../assets/camera.png';
 import portfolio from '../assets/porfolio.png'
 import PhotoStudio from '../assets/PhotoStudio.png'
 const portfolioData = {
