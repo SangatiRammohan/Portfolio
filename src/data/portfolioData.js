@@ -3,6 +3,8 @@ import CameraImg from '../assets/camera.png';
 import portfolio from '../assets/porfolio.png'
 import PhotoStudio from '../assets/PhotoStudio.png'
 import V2V from "../assets/V2V.png"
+import Polycab from '../assets/Polycab.png'
+import City from '../assets/City.png'
 const portfolioData = {
   user: {
     name: "Rammohan Sangati",
@@ -45,7 +47,7 @@ const portfolioData = {
       id: 2,
       name: "City Pulse ( city guide for disability people)",
       description: "A clone of the popular e-commerce platform Flipkart with similar functionality.",
-      image: "",
+      image: City,
       techStack: ["React", "Node.js", "MongoDB", "Express"],
       demoLink: "#",
       githubLink: ""
@@ -63,7 +65,7 @@ const portfolioData = {
       id: 4,
       name: "Polycab - Task Management",
       description: "A streaming platform clone with movie listings and preview functionality.",
-      image: "/api/placeholder/400/320",
+      image: Polycab,
       techStack: ["React", "Python", "DJango", "DJangoREST Framework"],
       demoLink: "#",
       githubLink: ""
