@@ -2,6 +2,7 @@
 import CameraImg from '../assets/camera.png';
 import portfolio from '../assets/porfolio.png'
 import PhotoStudio from '../assets/PhotoStudio.png'
+import V2V from "../assets/V2V.png"
 const portfolioData = {
   user: {
     name: "Rammohan Sangati",
@@ -80,7 +81,7 @@ const portfolioData = {
       id: 6,
       name: "V2V Communication using CAN Protocal",
       description: "V2V communication using CAN enables real-time data sharing for safety, traffic flow, and collision prevention.",
-      image: "",
+      image: V2V,
       techStack: [
         "Arduino",
         "C/C++",
