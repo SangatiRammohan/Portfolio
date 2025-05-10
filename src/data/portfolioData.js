@@ -1,6 +1,7 @@
 // src/data/portfolioData.js
 import Camera from '../assets/Camera.png'
 import portfolio from '../assets/porfolio.png'
+import PhotoStudio from '../assets/PhotoStudio.png'
 const portfolioData = {
   user: {
     name: "Rammohan Sangati",
@@ -52,7 +53,7 @@ const portfolioData = {
       id: 3,
       name: "Photo studio website",
       description: "A food delivery application clone with restaurant listings and ordering system.",
-      image: "/api/placeholder/400/320",
+      image: PhotoStudio,
       techStack: ["React", "CSS", "ReactBootstap"],
       demoLink: "https://photo-studio-git-main-rammohans-projects-dffdb287.vercel.app/",
       githubLink: "https://github.com/SangatiRammohan/Photo-Studio"
