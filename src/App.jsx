@@ -40,8 +40,8 @@ function App() {
           <Navbar />
           <Hero userData={data.user} />
           <About />
-          <Skills skills={data.skills} />
           <Projects projects={data.projects} />
+           <Skills skills={data.skills} />
           <Contact />
           <Footer />
           <ScrollToTop />
