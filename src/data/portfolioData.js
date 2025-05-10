@@ -73,7 +73,7 @@ const portfolioData = {
       image: portfolio,
       techStack: ["React", "CSS", "ReactBootstap"],
       demoLink: "#",
-      githubLink: ""
+      githubLink: "https://github.com/SangatiRammohan/Portfolio"
     },
     {
       id: 6,
