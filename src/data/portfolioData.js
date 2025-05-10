@@ -1,5 +1,5 @@
 // src/data/portfolioData.js
-import Camera from '../assets/Camera.png'
+import CameraImg from '../assets/Camera.png';
 import portfolio from '../assets/porfolio.png'
 import PhotoStudio from '../assets/PhotoStudio.png'
 const portfolioData = {
@@ -35,7 +35,7 @@ const portfolioData = {
       id: 1,
       name: "E-Commerce Website",
       description: "A fully responsive e-commerce website with product listings, cart functionality, and secure checkout.",
-      image: Camera,
+      image: CameraImg,
       techStack: ["HTML", "CSS", "JavaScript", "Bootstrap"],
       demoLink: "https://sangatirammohan.github.io/JavaScript-Project/main/index.html",
       githubLink: "https://github.com/SangatiRammohan/JavaScript-Project"
