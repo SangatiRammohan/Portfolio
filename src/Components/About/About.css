@@ -132,7 +132,7 @@
 #show-credentials{
   display: flex;
   width: 200px;
-  /* align-items: center; */
+  align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.8rem;
    color: white;
