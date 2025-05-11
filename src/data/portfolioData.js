@@ -49,8 +49,8 @@ const portfolioData = {
       description: "City Pulse is an inclusive city guide designed to help people with disabilities navigate urban spaces with accessibility information and resources.",
       image: City,
       techStack: ["React", "Node.js", "MongoDB", "Express"],
-      demoLink: "#",
-      githubLink: "#"
+      demoLink: "",
+      githubLink: ""
     },
     {
       id: 3,
@@ -67,8 +67,8 @@ const portfolioData = {
       description: "Polycab Task Management streamlines task assignment, tracking, and collaboration across teams to enhance productivity, accountability, and workflow efficiency.",
       image: Polycab,
       techStack: ["React", "Python", "DJango", "DJangoREST Framework"],
-      demoLink: "#",
-      githubLink: "#"
+      demoLink: "",
+      githubLink: ""
     },
     {
       id: 5,
