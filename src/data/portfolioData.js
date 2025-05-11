@@ -98,9 +98,9 @@ const portfolioData = {
     email: "sangatirammohan01@gmail.com",
     social: [
       { platform: "GitHub", link: "https://github.com/SangatiRammohan", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/github.svg" },
+      { platform: "LinkedIn", link: "https://www.linkedin.com/in/rammohan-sangati-b76535216/", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/linkedin.svg" },
       { platform: "Facebook", link: "https://www.facebook.com/share/1AXZcoQ61B/", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/facebook.svg" },
       { platform: "Instagram", link: "https://www.instagram.com/itsme_ram_mohan_?igsh=MTFsamM5dDBzNXY2Zw==", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/instagram.svg" },
-      { platform: "LinkedIn", link: "https://www.linkedin.com/in/rammohan-sangati-b76535216/", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/linkedin.svg" },
       { platform: "Twitter", link: "https://x.com/sangati_0131?t=dG5_5RLxFFupY4Is-d9Sjw&s=09", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/twitter.svg" },
 
     ]
