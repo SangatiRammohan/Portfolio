@@ -46,7 +46,7 @@ const About = () => {
     {
       title: 'Certificate of Completion',
       organization: "10000Coders",
-      year: '2023',
+      year: '2025',
       link:"https://drive.google.com/file/d/10fEmqNEXaOHUeX-B7DCdltsP4QqXD7rz/view?usp=drivesdk",
       description: 'Recognized for expertise in modern MERN STACK and best practices.'
     },
