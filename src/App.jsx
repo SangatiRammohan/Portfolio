@@ -21,7 +21,7 @@ function App() {
         setTimeout(() => {
           setData(portfolioData);
           setIsLoading(false);
-        }, 2000); // 2 second delay to simulate loading
+        }, 3000); // 3 second delay to simulate loading
       } catch (error) {
         console.error("Error loading portfolio data:", error);
         setIsLoading(false);
