@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Code, User, Book, Briefcase, Award, ArrowRight } from 'lucide-react';
+import { Code, User, Book, BadgeAlert, Briefcase, Award, ArrowRight } from 'lucide-react';
 import './About.css';
 import resume from '../../assets/resume.pdf'
 
@@ -31,6 +31,7 @@ const About = () => {
   const tabs = [
     { id: 'education', label: 'Education', icon: <Book size={20} /> },
     { id: 'awards', label: 'Awards', icon: <Award size={20} /> },
+    { id: 'publications', label: 'Publications', icon: <Briefcase size={20} /> },
   ];
 
   const education = [
@@ -59,6 +60,15 @@ const About = () => {
     }
   ];
 
+  const Publications = [
+    {
+      title: 'VEHICLE MOVEMENT BASED STREET LIGHT OPERATION FOR PREVENTING ENERGY AND HUMAN INTERVENTION',
+      organization: "Iterative International Publishers (IIP), Selfypage Developers Pvt Ltd. · Mar 22, 2023",
+      year: '2023',
+      link:" https://www.doi.org/10.58532/V3BFAI1P1CH4",
+      description: 'This project reduces street light energy consumption using Arduino UNO and IR sensors, activating LEDs only when vehicles are detected, ensuring efficient energy use through intelligent real-time light control.'
+    },
+  ];
   const renderTabContent = () => {
     switch (activeTab) {
       case 'education':
@@ -92,6 +102,24 @@ const About = () => {
                 
                 <p>{award.description}</p>
                 <a href={award.link} id="show-credentials" target="_blank"
+                  rel="noopener noreferrer">Show Credentials</a>
+              </div>
+            ))}
+          </div>
+        );
+        case 'publications':
+        return (
+          <div className="awards-container">
+            {Publications.map((publication, index) => (
+              <div key={index} className="award-item">
+                <h4>{publication.title}</h4>
+                <div className="award-info">
+                  <span className="organization">{publication.organization}</span>
+                  <span className="year">{publication.year}</span>
+                </div>
+                
+                <p>{publication.description}</p>
+                <a href={publication.link} id="show-credentials" target="_blank"
                   rel="noopener noreferrer">Show Credentials</a>
               </div>
             ))}
