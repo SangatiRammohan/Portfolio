@@ -68,7 +68,7 @@ const portfolioData = {
       image: Polycab,
       techStack: ["React", "Python", "DJango", "DJangoREST Framework"],
       demoLink: "",
-      githubLink: ""
+      githubLink: "https://github.com/SangatiRammohan/Polycab-Project-mangement"
     },
     {
       id: 5,
