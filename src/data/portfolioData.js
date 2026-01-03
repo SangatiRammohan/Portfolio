@@ -49,8 +49,8 @@ const portfolioData = {
       description: "City Pulse is an inclusive city guide designed to help people with disabilities navigate urban spaces with accessibility information and resources.",
       image: City,
       techStack: ["React", "Node.js", "MongoDB", "Express"],
-      demoLink: "",
-      githubLink: ""
+      demoLink: "https://city-pulse-01.vercel.app/",
+      githubLink: "https://github.com/SangatiRammohan/City-Pulse/tree/master"
     },
     {
       id: 3,
