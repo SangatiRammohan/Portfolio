@@ -67,7 +67,7 @@ const portfolioData = {
       description: "Polycab Task Management streamlines task assignment, tracking, and collaboration across teams to enhance productivity, accountability, and workflow efficiency.",
       image: Polycab,
       techStack: ["React", "Python", "DJango", "DJangoREST Framework"],
-      demoLink: "",
+      demoLink: "https://polycab-project-mangement.vercel.app",
       githubLink: "https://github.com/SangatiRammohan/Polycab-Project-mangement"
     },
     {
