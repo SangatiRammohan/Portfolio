@@ -18,26 +18,15 @@ function Contact() {
     message: ''
   });
 
-  const [activeOption, setActiveOption] = useState(null);
+  const [showForm, setShowForm] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleOptionClick = (option) => {
-    if (activeOption === option) {
-      setActiveOption(null);
-      setFormData({ fullName: '', email: '', phone: '', message: '' });
-      setFormStatus({ submitted: false, error: false, message: '' });
-    } else {
-      setActiveOption(option);
-      setFormStatus({ submitted: false, error: false, message: '' });
-    }
-  };
-
   const handleClose = () => {
-    setActiveOption(null);
+    setShowForm(false);
     setFormData({ fullName: '', email: '', phone: '', message: '' });
     setFormStatus({ submitted: false, error: false, message: '' });
   };
@@ -60,14 +49,9 @@ ${formData.message}`;
       });
 
       setTimeout(() => {
-        if (activeOption === 'linkedin') {
-          const encodedMessage = encodeURIComponent(messageBody);
-          window.open(`${linkedInProfileURL}?message=${encodedMessage}`, '_blank');
-        } else if (activeOption === 'email') {
-          const subject = encodeURIComponent(`Portfolio Contact from ${formData.fullName}`);
-          const body = encodeURIComponent(messageBody);
-          window.open(`mailto:${emailAddress}?subject=${subject}&body=${body}`, '_blank');
-        }
+        const subject = encodeURIComponent(`Portfolio Contact from ${formData.fullName}`);
+        const body = encodeURIComponent(messageBody);
+        window.open(`mailto:${emailAddress}?subject=${subject}&body=${body}`, '_blank');
         setFormData({ fullName: '', email: '', phone: '', message: '' });
         setTimeout(() => {
           setFormStatus({ submitted: false, error: false, message: '' });
@@ -86,7 +70,6 @@ ${formData.message}`;
     <section id="contact" className="contact-section">
       <div className="contact-container">
 
-        {/* Header */}
         <div className="section-header">
           <div className="section-badge">
             <span className="section-badge-dot"></span>
@@ -98,57 +81,50 @@ ${formData.message}`;
             Pick your preferred way to reach out.
           </p>
 
-          {/* Two Connect Options */}
           <div className="connect-options">
-            <button
-              className={`connect-option-btn linkedin-btn ${activeOption === 'linkedin' ? 'active' : ''}`}
-              onClick={() => handleOptionClick('linkedin')}
-              type="button"
+            <a
+              className="connect-option-btn linkedin-btn"
+              href={linkedInProfileURL}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <i className="fab fa-linkedin"></i>
               <span>Connect on LinkedIn</span>
-              <i className={`fas fa-chevron-${activeOption === 'linkedin' ? 'up' : 'down'} chevron-icon`}></i>
-            </button>
+              <i className="fas fa-external-link-alt chevron-icon"></i>
+            </a>
+
             <button
-              className={`connect-option-btn email-btn ${activeOption === 'email' ? 'active' : ''}`}
-              onClick={() => handleOptionClick('email')}
+              className={`connect-option-btn email-btn ${showForm ? 'active' : ''}`}
+              onClick={() => setShowForm(!showForm)}
               type="button"
             >
               <i className="fas fa-envelope"></i>
               <span>Send an Email</span>
-              <i className={`fas fa-chevron-${activeOption === 'email' ? 'up' : 'down'} chevron-icon`}></i>
+              <i className={`fas fa-chevron-${showForm ? 'up' : 'down'} chevron-icon`}></i>
             </button>
           </div>
         </div>
 
-        {/* Hint */}
-        {!activeOption && (
+        {!showForm && (
           <p className="select-hint">
             <i className="fas fa-arrow-up"></i>
             Choose an option above to get started
           </p>
         )}
 
-        {/* Form */}
-        {activeOption && (
+        {showForm && (
           <div className="contact-wrapper">
             <div className="contact-form-column">
-              <div className={`contact-form-card ${activeOption}`}>
+              <div className="contact-form-card email">
 
                 <div className="form-card-header">
                   <div className="form-card-header-left">
-                    <div className={`form-card-icon ${activeOption}`}>
-                      <i className={activeOption === 'linkedin' ? 'fab fa-linkedin' : 'fas fa-envelope'}></i>
+                    <div className="form-card-icon email">
+                      <i className="fas fa-envelope"></i>
                     </div>
                     <div>
-                      <h3 className="contact-form-title">
-                        {activeOption === 'linkedin' ? 'Message via LinkedIn' : 'Send an Email'}
-                      </h3>
-                      <p className="form-card-subtitle">
-                        {activeOption === 'linkedin'
-                          ? "I'll receive your message on LinkedIn"
-                          : `Sending to ${emailAddress}`}
-                      </p>
+                      <h3 className="contact-form-title">Send an Email</h3>
+                      <p className="form-card-subtitle">Sending to {emailAddress}</p>
                     </div>
                   </div>
                   <button className="form-close-btn" onClick={handleClose} type="button">
@@ -249,7 +225,7 @@ ${formData.message}`;
                     </button>
                     <button
                       type="submit"
-                      className={`submit-button ${activeOption}`}
+                      className="submit-button email"
                       disabled={formStatus.submitted}
                     >
                       {formStatus.submitted ? (
@@ -259,8 +235,8 @@ ${formData.message}`;
                         </>
                       ) : (
                         <>
-                          <span>{activeOption === 'linkedin' ? 'Send via LinkedIn' : 'Send via Email'}</span>
-                          <i className={activeOption === 'linkedin' ? 'fab fa-linkedin' : 'fas fa-paper-plane'}></i>
+                          <span>Send via Email</span>
+                          <i className="fas fa-paper-plane"></i>
                         </>
                       )}
                     </button>
