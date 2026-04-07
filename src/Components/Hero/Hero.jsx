@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronsDown } from 'lucide-react';
 import './Hero.css';
-import image from '../../assets/Rammohan.jpg'
-import image1 from '../../assets/Ram.jpg'
+import image from '../../assets/Rammohan.jpg';
+import image1 from '../../assets/Ram.jpg';
 
-// Modern Hero Component with Image
 const Hero = ({ userData = {
-  
-    name: "Rammohan Sangati",
-    titles: ["MERN STACK DEVELOPER", "PYTHON Developer"],
-    subtitle: "Working towards To Become A Full Stack Developer",
-    image:ramimage 
+  name: "Rammohan Sangati",
+  titles: ["MERN STACK DEVELOPER", "PYTHON Developer"],
+  subtitle: "Working towards To Become A Full Stack Developer",
+  image: image   // ← was ramimage, now image
 }}) => {
   const [titleIndex, setTitleIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
