@@ -50,7 +50,7 @@ const portfolioData = {
   name: "Secure User Management & Dashboard System",
   description: "A production-ready full-stack web application featuring JWT-based authentication with access/refresh token rotation, role-based access control (Admin & User), and a real-time admin dashboard with user analytics, activity logs, and charts. Built with React.js, Node.js, Express, and MongoDB Atlas — deployed serverless on AWS Lambda with API Gateway for the backend and AWS S3 for static frontend hosting.",
   image: UserManagement,
-  techStack: ["React", "Node.js", "Express", "MongoDB", "AWS Lambda", "JWT", "Tailwind CSS"],
+  techStack: ["AWS Lambda", "Node.js", "Express", "MongoDB", "React", "JWT", "Tailwind CSS"],
   demoLink: "http://userms-frontend-ramtech.s3-website.ap-south-1.amazonaws.com",
   githubLink: "https://github.com/SangatiRammohan/user-management-system"
 },
