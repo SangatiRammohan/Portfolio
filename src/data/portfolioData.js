@@ -7,6 +7,7 @@ import Polycab from '../assets/Polycab.png';
 import City from '../assets/City.png';
 import Analytics from '../assets/analytics.png';
 import UserManagement from '../assets/userManagement.png';
+import CICDDashboard from "../assets/CICDDashboard.png"
 
 const portfolioData = {
   user: {
@@ -16,7 +17,7 @@ const portfolioData = {
     image: ""
   },
 
-  skills: [
+skills: [
     { name: "HTML", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
     { name: "CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
     { name: "Bootstrap", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" },
@@ -36,11 +37,34 @@ const portfolioData = {
     { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
     { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
     { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" },
-  ],
+    { name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original-wordmark.svg" },
+    { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain-wordmark.svg" },
 
-  projects: [
+    // ── Added from CI/CD project ──
+    { name: "Prometheus", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" },
+    { name: "Grafana", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" },
+    { name: "ArgoCD", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/argocd/argocd-original.svg" },
+    { name: "Helm", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/helm/helm-original.svg" },
+    { name: "GitHub Actions", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg" },
+    { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+    { name: "Nginx", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" },
+    { name: "Vite", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg" },
+],
+
+projects: [
     {
       id: 1,
+      name: "CI/CD Platform Dashboard",
+      category: "devops",
+      description:
+        "A production-grade GitOps CI/CD monitoring platform built with the MERN stack, Kubernetes, ArgoCD, Prometheus, and Grafana. Every git push triggers a fully automated pipeline — Docker build, AWS ECR push, ArgoCD deployment to Kubernetes — with real-time pipeline runs, live pod status, and deployment history visible in a React dashboard via Socket.io WebSockets.",
+      image: CICDDashboard,
+      techStack: ["React", "Node.js", "MongoDB", "Docker", "Kubernetes", "ArgoCD", "Prometheus", "Grafana", "AWS ECR", "GitHub Actions"],
+      demoLink: "https://cicd-dashboard-kappa.vercel.app",
+      githubLink: "https://github.com/SangatiRammohan/cicd-dashboard",
+    },
+    {
+      id: 2,
       name: "Backend Analytics & Reporting Service",
       category: "aws",
       description:
@@ -51,7 +75,7 @@ const portfolioData = {
       githubLink: "https://github.com/SangatiRammohan/Full-stack-analytics-service-in-AWS",
     },
     {
-      id: 2,
+      id: 3,
       name: "Secure User Management & Dashboard System",
       category: "aws",
       description:
@@ -62,7 +86,7 @@ const portfolioData = {
       githubLink: "https://github.com/SangatiRammohan/user-management-system",
     },
     {
-      id: 3,
+      id: 4,
       name: "E-Commerce Website",
       category: "javascript",
       description:
@@ -73,7 +97,7 @@ const portfolioData = {
       githubLink: "https://github.com/SangatiRammohan/JavaScript-Project",
     },
     {
-      id: 4,
+      id: 5,
       name: "City Pulse (city guide for disability people)",
       category: "mern",
       description:
@@ -84,7 +108,7 @@ const portfolioData = {
       githubLink: "https://github.com/SangatiRammohan/City-Pulse/tree/master",
     },
     {
-      id: 5,
+      id: 6,
       name: "Photo Studio Website",
       category: "javascript",
       description:
@@ -95,7 +119,7 @@ const portfolioData = {
       githubLink: "https://github.com/SangatiRammohan/Photo-Studio",
     },
     {
-      id: 6,
+      id: 7,
       name: "Polycab - Task Management",
       category: "python",
       description:
@@ -106,7 +130,7 @@ const portfolioData = {
       githubLink: "https://github.com/SangatiRammohan/Polycab-Project-mangement",
     },
     {
-      id: 7,
+      id: 8,
       name: "Portfolio Website",
       category: "javascript",
       description:
@@ -117,7 +141,7 @@ const portfolioData = {
       githubLink: "https://github.com/SangatiRammohan/Portfolio",
     },
     {
-      id: 8,
+      id: 9,
       name: "V2V Communication using CAN Protocol",
       category: "hardware",
       description:

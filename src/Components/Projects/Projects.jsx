@@ -8,6 +8,7 @@ const categoryLabels = {
   python: 'Python',
   aws: 'AWS Full Stack',
   hardware: 'Hardware',
+  devops:'devops',
 };
 
 function Projects({ projects }) {
@@ -20,7 +21,7 @@ function Projects({ projects }) {
   const otherProjects = projects?.slice(0) || [];
 
   // Fixed category order
-  const categories = ['all', 'javascript', 'mern', 'python', 'aws', 'hardware'];
+  const categories = ['all', 'javascript', 'mern', 'python', 'aws','devops', 'hardware',];
 
   // Filter projects based on active filter
   const filteredProjects =
