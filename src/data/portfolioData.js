@@ -6,7 +6,7 @@ import V2V from "../assets/V2V.png";
 import Polycab from '../assets/Polycab.png';
 import City from '../assets/City.png';
 import Analytics from '../assets/analytics.png';
-import UserManagement from '../assets/userManagement.png';
+import UserManagement from '../assets/UserManagement.png';
 import CICDDashboard from "../assets/CICDDashboard.png"
 
 const portfolioData = {
