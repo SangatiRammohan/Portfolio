@@ -1,0 +1,750 @@
+/* Experience.css
+   Every selector is namespaced (.experience-section / .exp-*) because this
+   project imports plain, unscoped CSS - generic names like .section-title
+   are already taken by Projects.css and Contact.css.
+
+   Sizing is fluid first (clamp) and only falls back to breakpoints where the
+   layout genuinely has to change shape, so there are no dead zones between
+   widths. */
+
+.experience-section {
+  --exp-primary: #4a6cf7;
+  --exp-primary-dark: #3755d3;
+  --exp-primary-soft: #eef2ff;
+  --exp-ink: #1e293b;
+  --exp-body: #4d5b70;
+  --exp-muted: #7c899c;
+  --exp-line: #e3e9f4;
+  --exp-surface: #ffffff;
+  --exp-live: #16a34a;
+
+  position: relative;
+  padding: clamp(3.5rem, 8vw, 6rem) 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f2f8ff 100%);
+  overflow: hidden;
+}
+
+/* Soft ambient wash so the section sits between the grey About block
+   and the sky-blue Projects block instead of cutting against them. */
+.experience-section::before {
+  content: '';
+  position: absolute;
+  top: -160px;
+  right: -120px;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74, 108, 247, 0.10) 0%, rgba(74, 108, 247, 0) 70%);
+  pointer-events: none;
+}
+
+.exp-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 1.5rem);
+}
+
+/* Long unbroken strings (URLs, product names) must never widen the layout. */
+.experience-section h2,
+.experience-section h3,
+.experience-section h4,
+.experience-section h5,
+.experience-section p,
+.experience-section li,
+.experience-section span,
+.experience-section a {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ---------- Header ---------- */
+
+.exp-header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.exp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.9rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  background: var(--exp-primary-soft);
+  color: var(--exp-primary);
+  font-size: clamp(0.68rem, 2vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.exp-header h2 {
+  font-size: clamp(1.7rem, 5.4vw, 2.5rem);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.exp-divider {
+  height: 4px;
+  width: 60px;
+  margin: 0 auto 1.5rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #4a6cf7, #6c8eef);
+}
+
+.exp-intro {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: clamp(0.93rem, 2.6vw, 1.08rem);
+  line-height: 1.7;
+  color: #555;
+}
+
+/* ---------- Stat rail ---------- */
+
+.exp-stat-rail {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.6rem, 2vw, 1rem);
+  margin-bottom: clamp(2.25rem, 6vw, 3.5rem);
+}
+
+.exp-stat {
+  padding: clamp(1rem, 3vw, 1.4rem) clamp(0.65rem, 2.5vw, 1.2rem);
+  border: 1px solid var(--exp-line);
+  border-radius: 14px;
+  background: var(--exp-surface);
+  box-shadow: 0 6px 20px rgba(15, 34, 78, 0.05);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.exp-stat:hover {
+  transform: translateY(-4px);
+  border-color: rgba(74, 108, 247, 0.35);
+  box-shadow: 0 14px 30px rgba(15, 34, 78, 0.10);
+}
+
+.exp-stat-value {
+  display: block;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--exp-primary);
+}
+
+.exp-stat-label {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: clamp(0.74rem, 2.1vw, 0.85rem);
+  line-height: 1.4;
+  color: var(--exp-muted);
+}
+
+/* ---------- Timeline ---------- */
+
+.exp-timeline {
+  --exp-rail: clamp(1.5rem, 5vw, 2.75rem);
+  position: relative;
+  padding-left: var(--exp-rail);
+}
+
+.exp-timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--exp-primary) 0%, rgba(74, 108, 247, 0.18) 100%);
+}
+
+.exp-item {
+  position: relative;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.exp-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Marker keeps a fixed 16px size at every width so it stays centred on the
+   2px rail; only its offset tracks the fluid gutter. */
+.exp-marker {
+  position: absolute;
+  left: calc(var(--exp-rail) * -1);
+  top: clamp(1.5rem, 4vw, 2.1rem);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--exp-primary);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.35);
+}
+
+.exp-marker.is-current::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(74, 108, 247, 0.5);
+  animation: exp-pulse 2.4s ease-out infinite;
+}
+
+@keyframes exp-pulse {
+  0%   { transform: scale(0.75); opacity: 0.9; }
+  70%  { transform: scale(1.5);  opacity: 0; }
+  100% { transform: scale(1.5);  opacity: 0; }
+}
+
+/* ---------- Card ---------- */
+
+.exp-card {
+  background: var(--exp-surface);
+  border: 1px solid var(--exp-line);
+  border-radius: clamp(12px, 2vw, 16px);
+  padding: clamp(1.15rem, 3.6vw, 1.9rem);
+  box-shadow: 0 10px 30px rgba(15, 34, 78, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.exp-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(74, 108, 247, 0.28);
+  box-shadow: 0 18px 44px rgba(15, 34, 78, 0.11);
+}
+
+.exp-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(0.75rem, 2.5vw, 1.1rem);
+}
+
+.exp-logo {
+  flex: 0 0 auto;
+  width: clamp(44px, 11vw, 58px);
+  height: clamp(44px, 11vw, 58px);
+  border-radius: clamp(11px, 2.5vw, 14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--exp-primary), #6c8eef);
+  color: #fff;
+  font-size: clamp(0.9rem, 2.6vw, 1.15rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 18px rgba(74, 108, 247, 0.28);
+}
+
+.exp-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* A favicon is a small logo on its own background, so the tile turns into a
+   plain white chip with padding instead of the blue gradient - a gradient
+   behind a coloured favicon reads as two competing logos. */
+.exp-logo-favicon {
+  background: #fff;
+  border: 1px solid var(--exp-line);
+  padding: clamp(6px, 1.6vw, 9px);
+  box-shadow: 0 6px 14px rgba(15, 34, 78, 0.08);
+}
+
+.exp-logo-favicon img {
+  object-fit: contain;
+}
+
+.exp-website {
+  color: var(--exp-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.exp-website:hover {
+  color: var(--exp-primary);
+  border-bottom-color: currentColor;
+}
+
+.exp-website:focus-visible {
+  outline: 2px solid var(--exp-primary);
+  outline-offset: 2px;
+}
+
+.exp-heading {
+  flex: 1;
+  min-width: 0;
+}
+
+.exp-role-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+}
+
+.exp-role {
+  font-size: clamp(1.05rem, 3.4vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--exp-ink);
+}
+
+.exp-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 100%;
+  padding: 0.22rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(22, 163, 74, 0.10);
+  color: var(--exp-live);
+  font-size: clamp(0.68rem, 2vw, 0.75rem);
+  font-weight: 700;
+}
+
+.exp-live-dot {
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--exp-live);
+  animation: exp-blink 1.8s ease-in-out infinite;
+}
+
+@keyframes exp-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.25; }
+}
+
+.exp-company {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-weight: 600;
+  color: var(--exp-primary);
+}
+
+.exp-company svg {
+  flex: 0 0 auto;
+}
+
+.exp-company a:hover {
+  text-decoration: underline;
+}
+
+.exp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.9rem;
+  margin-top: 0.6rem;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(0.78rem, 2.2vw, 0.87rem);
+  color: var(--exp-muted);
+}
+
+.exp-meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.exp-meta svg {
+  flex: 0 0 auto;
+}
+
+.exp-meta-duration {
+  padding: 0.12rem 0.6rem;
+  border-radius: 999px;
+  background: #f1f5fb;
+  color: var(--exp-body);
+  font-weight: 600;
+}
+
+.exp-summary {
+  margin-top: clamp(1rem, 3vw, 1.25rem);
+  font-size: clamp(0.92rem, 2.5vw, 1rem);
+  line-height: 1.75;
+  color: var(--exp-body);
+}
+
+/* ---------- Metrics inside the card ---------- */
+
+/* minmax(min(140px, 100%), 1fr) is the key bit: on a 320px phone the track
+   collapses instead of forcing a horizontal scrollbar. */
+.exp-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+  gap: 0.75rem;
+  margin-top: clamp(1.15rem, 3.5vw, 1.5rem);
+  padding: clamp(0.85rem, 2.8vw, 1.1rem);
+  border-radius: 12px;
+  background: #f7f9ff;
+  border: 1px solid #e8eefc;
+}
+
+.exp-metric {
+  text-align: center;
+}
+
+.exp-metric-value {
+  display: block;
+  font-size: clamp(1.1rem, 3.4vw, 1.35rem);
+  font-weight: 800;
+  color: var(--exp-ink);
+}
+
+.exp-metric-label {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
+  line-height: 1.35;
+  color: var(--exp-muted);
+}
+
+/* ---------- Blocks ---------- */
+
+.exp-block {
+  margin-top: clamp(1.25rem, 4vw, 1.75rem);
+  padding-top: clamp(1rem, 3.2vw, 1.5rem);
+  border-top: 1px solid var(--exp-line);
+}
+
+.exp-block-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+  font-size: clamp(0.74rem, 2.1vw, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--exp-primary);
+}
+
+.exp-block-title svg {
+  flex: 0 0 auto;
+}
+
+.exp-highlights {
+  display: grid;
+  gap: clamp(0.7rem, 2.2vw, 0.85rem);
+  padding: 0;
+  list-style: none;
+}
+
+.exp-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: clamp(0.88rem, 2.4vw, 0.97rem);
+  line-height: 1.65;
+  color: var(--exp-body);
+}
+
+.exp-check {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  margin-top: 0.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--exp-primary-soft);
+  color: var(--exp-primary);
+}
+
+/* ---------- Product switcher (the interactive bit) ---------- */
+
+/* Underline tab bar, matching the Education / Awards / Publications tabs in
+   the About section so the two switchers read as one component. */
+.exp-product-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+  overflow-x: auto;
+}
+
+.exp-product-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+  padding: 1rem clamp(0.9rem, 3vw, 1.5rem);
+  border: none;
+  border-radius: 0;
+  background: none;
+  font-family: inherit;
+  font-size: clamp(0.88rem, 2.4vw, 1rem);
+  font-weight: 600;
+  color: #777;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exp-product-tab svg {
+  flex: 0 0 auto;
+}
+
+.exp-product-tab:hover {
+  color: var(--exp-primary);
+}
+
+.exp-product-tab.active {
+  color: var(--exp-primary);
+  box-shadow: inset 0 -3px 0 var(--exp-primary);
+}
+
+.exp-product-tab:focus-visible,
+.exp-company a:focus-visible {
+  outline: 2px solid var(--exp-primary);
+  outline-offset: 2px;
+}
+
+.exp-product-panel {
+  padding: clamp(1rem, 3vw, 1.35rem);
+  border: 1px solid #e8eefc;
+  border-left: 3px solid var(--exp-primary);
+  border-radius: 12px;
+  background: #fbfcff;
+  animation: exp-fade-in 0.35s ease both;
+}
+
+@keyframes exp-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.exp-product-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.exp-product-head h5 {
+  font-size: clamp(1rem, 2.8vw, 1.08rem);
+  font-weight: 700;
+  color: var(--exp-ink);
+}
+
+.exp-product-tagline {
+  font-size: clamp(0.76rem, 2.1vw, 0.83rem);
+  font-weight: 600;
+  color: var(--exp-muted);
+}
+
+.exp-product-desc {
+  font-size: clamp(0.88rem, 2.4vw, 0.95rem);
+  line-height: 1.7;
+  color: var(--exp-body);
+}
+
+.exp-product-contribution {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.3rem;
+  margin-top: 0.7rem;
+  font-size: clamp(0.86rem, 2.3vw, 0.93rem);
+  line-height: 1.6;
+  color: var(--exp-body);
+}
+
+.exp-product-contribution svg {
+  flex: 0 0 auto;
+  margin-top: 0.28rem;
+  color: var(--exp-primary);
+}
+
+.exp-product-contribution strong {
+  color: var(--exp-ink);
+}
+
+/* ---------- Chips ---------- */
+
+.exp-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.9rem;
+}
+
+.exp-chip {
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  background: var(--exp-primary-soft);
+  color: var(--exp-primary-dark);
+  font-size: clamp(0.72rem, 2vw, 0.8rem);
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.exp-chip:hover {
+  background: var(--exp-primary);
+  color: #fff;
+}
+
+.exp-chip.subtle {
+  background: #eef1f7;
+  color: var(--exp-body);
+}
+
+.exp-chip.subtle:hover {
+  background: #dfe5f1;
+  color: var(--exp-ink);
+}
+
+.exp-card-foot {
+  margin-top: clamp(1.25rem, 4vw, 1.75rem);
+  padding-top: clamp(1rem, 3vw, 1.35rem);
+  border-top: 1px solid var(--exp-line);
+}
+
+.exp-foot-label {
+  font-size: clamp(0.7rem, 2vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--exp-muted);
+}
+
+.exp-card-foot .exp-chip-row {
+  margin-top: 0.65rem;
+}
+
+/* ---------- Scroll reveal ---------- */
+
+.experience-section .exp-header,
+.experience-section .exp-stat,
+.experience-section .exp-item {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.experience-section.visible .exp-header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.experience-section.visible .exp-stat,
+.experience-section.visible .exp-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(0.12s + var(--exp-index, 0) * 0.1s);
+}
+
+/* ---------- Layout shape changes ---------- */
+
+/* Tablet: the four stat tiles stop fitting on one comfortable row. */
+@media (max-width: 900px) {
+  .exp-stat-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Phone: product tabs become a swipeable rail rather than wrapping into
+   three ragged rows, and the trailing fade signals there is more to scroll. */
+@media (max-width: 768px) {
+  /* The bar scrolls sideways on a phone. The fade is applied to a wrapper
+     gradient rather than a mask so the 1px baseline rule is never clipped. */
+  .exp-product-tabs {
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .exp-product-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .exp-product-tab {
+    padding: 0.8rem 1rem;
+    scroll-snap-align: start;
+  }
+
+  /* Hover states stick on touch devices. */
+  .exp-card:hover,
+  .exp-stat:hover {
+    transform: none;
+  }
+}
+
+/* Small phone: the logo and heading stop sharing a row. */
+@media (max-width: 480px) {
+  .exp-card-head {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .exp-meta {
+    gap: 0.35rem 0.7rem;
+  }
+
+  .exp-highlights li {
+    gap: 0.55rem;
+  }
+
+  .exp-check {
+    flex-basis: 18px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Two stat columns hold up even at 320px (~139px per tile), so only the
+   timeline gutter needs to tighten here. */
+@media (max-width: 380px) {
+  .exp-timeline {
+    --exp-rail: 1.25rem;
+  }
+
+  .exp-card {
+    padding: 1rem;
+  }
+
+  .exp-stat {
+    padding: 0.9rem 0.55rem;
+  }
+}
+
+/* ---------- Accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-section .exp-header,
+  .experience-section .exp-stat,
+  .experience-section .exp-item,
+  .exp-product-panel {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+
+  .exp-marker.is-current::after,
+  .exp-live-dot {
+    animation: none;
+  }
+
+  .exp-card:hover,
+  .exp-stat:hover {
+    transform: none;
+  }
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import Hero from './Components/Hero/Hero';
 import About from './Components/About/About';
+import Experience from './Components/Experience/Experience';
 import Skills from './Components/Skills/Skills';
 import Projects from './Components/Projects/Projects';
 import Contact from './Components/Contact/Contact';
@@ -38,8 +39,13 @@ function App() {
       {!isLoading && data && (
         <div className="portfolio-app">
           <Navbar />
-          <Hero userData={data.user} />
+          <Hero
+            userData={data.user}
+            highlights={data.heroHighlights}
+            socials={data.contact?.social}
+          />
           <About />
+          <Experience experience={data.experience} stats={data.experienceStats} />
           <Projects projects={data.projects} />
            <Skills skills={data.skills} />
           <Contact />

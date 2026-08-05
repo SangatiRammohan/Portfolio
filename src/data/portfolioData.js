@@ -12,10 +12,128 @@ import CICDDashboard from "../assets/CICDDashboard.png"
 const portfolioData = {
   user: {
     name: "Rammohan Sangati",
-    titles: ["MERN STACK DEVELOPER", "PYTHON Developer"],
+    titles: ["Full Stack Developer", "MERN Stack Developer", "Python Developer"],
     subtitle: "Working towards To Become A Full Stack Developer",
+    description:
+      "A Full Stack Developer building production web applications with React, Node.js, Django and MySQL \u2014 shipping features end to end across five in-house products, from REST API and schema through to responsive UI and deployment.",
     image: ""
   },
+
+  heroHighlights: [
+    { icon: "briefcase", value: "1+", label: "Years of Experience" },
+    { icon: "layers", value: "5", label: "Products Shipped" },
+    { icon: "code", value: "9+", label: "Projects Finished" },
+  ],
+
+  experienceStats: [
+    { value: "1+", label: "Years building production apps" },
+    { value: "5", label: "In-house products shipped on" },
+    { value: "40+", label: "REST endpoints integrated" },
+    { value: "2", label: "Backends in daily use (Node & Django)" },
+  ],
+
+  experience: [
+    {
+      id: 1,
+      role: "Full Stack Developer",
+      company: "Lanciere Technologies Pvt. Ltd.",
+      website: "https://www.lancieretechnologies.com",
+      location: "Hyderabad, India",
+      employmentType: "Full-time",
+      startDate: "2025-07",
+      endDate: null,
+      summary:
+        "Full Stack Developer on a five-product in-house suite. I take features from requirement to production: MySQL/MongoDB schema, Node.js or Django REST services, React + Material UI screens, then the Docker/Linux deploy and the CloudWatch triage that follows.",
+      metrics: [
+        { value: "5", label: "Products in production" },
+        { value: "40+", label: "REST endpoints wired" },
+        { value: "Real-time", label: "LiveKit / WebSocket features" },
+        { value: "AWS", label: "Lambda, S3, EC2, SNS" },
+      ],
+      highlights: [
+        "Delivered features end to end across five production products - React/MUI front ends, Node.js and Django REST services, MySQL/MongoDB schemas - from requirement through to deployment.",
+        "Integrated 40+ REST endpoints with JWT auth, role-based access, pagination and centralised error handling, removing repeated API-handling code across screens.",
+        "Built real-time meeting features on LiveKit and WebSockets: room lifecycle, join/leave signalling, screen share and in-call chat.",
+        "Standardised reusable MUI form, table and dialog components with client-side validation, cutting new-screen build time and keeping UI behaviour consistent.",
+        "Deployed and maintained Dockerised builds on Linux servers, and contributed to the AWS architecture (Lambda, S3, EC2, CloudWatch, SNS) behind media storage, notifications and background jobs.",
+        "Diagnosed production defects through CloudWatch logs and API tracing, using Copilot and Claude to speed up code review, refactoring and debugging.",
+      ],
+      techStack: [
+        "React",
+        "Material UI",
+        "Redux",
+        "Node.js",
+        "Express.js",
+        "Python",
+        "Django",
+        "Django REST Framework",
+        "MySQL",
+        "MongoDB",
+        "LiveKit (WebRTC)",
+        "WebSockets",
+        "JWT",
+        "Docker",
+        "Linux",
+        "AWS Lambda",
+        "AWS S3",
+        "AWS EC2",
+        "CloudWatch",
+        "SNS",
+      ],
+      products: [
+        {
+          name: "iMeetPro",
+          icon: "video",
+          tagline: "Video meeting platform",
+          description:
+            "A multi-participant video conferencing product built on LiveKit and WebRTC, with screen share, in-call chat and host controls.",
+          contribution:
+            "Built the meeting UI and the signalling integration - room lifecycle, join and leave events, and the in-call chat channel.",
+          stack: ["React", "Node.js", "LiveKit / WebRTC", "WebSockets"],
+        },
+        {
+          name: "IEvalx",
+          icon: "assessment",
+          tagline: "AI-powered hiring platform",
+          description:
+            "An end-to-end hiring portal with a multi-round interview pipeline, AI-driven interviews and ranked candidate results.",
+          contribution:
+            "Built the jobseeker and employer screens plus the reporting APIs behind ranked results and interview reports.",
+          stack: ["React", "Material UI", "Django REST", "MySQL"],
+        },
+        {
+          name: "iMentora",
+          icon: "education",
+          tagline: "Student management system",
+          description:
+            "Role-based management of students, batches, courses and academic records, with full CRUD, search, filtering and validation.",
+          contribution:
+            "Delivered the record management screens and the validation layer that keeps academic data consistent.",
+          stack: ["React", "Material UI", "SQL"],
+        },
+        {
+          name: "ReSnap",
+          icon: "notes",
+          tagline: "AI study-material generator",
+          description:
+            "Turns uploaded lecture video and audio into transcripts, structured notes and summaries, with async job tracking so long uploads never block the UI.",
+          contribution:
+            "Wired the upload-to-transcript pipeline and the job status tracking that reports progress back to the student.",
+          stack: ["React", "Python", "LLM APIs"],
+        },
+        {
+          name: "JustInSports",
+          icon: "sports",
+          tagline: "Sports product",
+          description:
+            "One of the five in-house products in the suite, sharing the same component library, auth model and deployment pipeline as the rest.",
+          contribution:
+            "Contributed front-end features and REST integrations on the shared React and Material UI foundation.",
+          stack: ["React", "Material UI", "REST APIs"],
+        },
+      ],
+    },
+  ],
 
 skills: [
     { name: "HTML", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },

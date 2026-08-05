@@ -49,7 +49,11 @@ function Navbar() {
   };
 
   return (
-    <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+    <header
+      className={`navbar ${isScrolled ? 'scrolled' : ''} ${
+        isMenuOpen ? 'menu-open' : ''
+      }`}
+    >
       <div className="navbar-container">
         <div className="logo">
           <a href="#home">

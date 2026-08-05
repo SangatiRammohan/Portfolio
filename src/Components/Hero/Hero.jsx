@@ -1,111 +1,210 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronsDown } from 'lucide-react';
+import {
+  ChevronDown,
+  Download,
+  Send,
+  Briefcase,
+  Layers,
+  Code2,
+  Github,
+  Linkedin,
+  Facebook,
+  Instagram,
+  Twitter,
+  Globe,
+} from 'lucide-react';
 import './Hero.css';
-import image from '../../assets/Rammohan.jpg';
-import image1 from '../../assets/Ram.jpg';
+import portfolioData from '../../data/portfolioData';
+import heroPhoto from '../../assets/Ram.jpg';
+import resume from '../../assets/resume.pdf';
 
-const Hero = ({ userData = {
-  name: "Rammohan Sangati",
-  titles: ["MERN STACK DEVELOPER", "PYTHON Developer"],
-  subtitle: "Working towards To Become A Full Stack Developer",
-  image: image   // ← was ramimage, now image
-}}) => {
-  const [titleIndex, setTitleIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  
-  // Title rotation effect with animation
+/* Badge icons are referenced by name in portfolioData so the data file
+   stays free of imports. */
+const BADGE_ICONS = {
+  briefcase: Briefcase,
+  layers: Layers,
+  code: Code2,
+};
+
+const SOCIAL_ICONS = {
+  github: Github,
+  linkedin: Linkedin,
+  facebook: Facebook,
+  instagram: Instagram,
+  twitter: Twitter,
+};
+
+/* Reads the media query during the first render, not in an effect, so the
+   portrait is never committed to the DOM on a phone - CSS `display: none`
+   would still make the browser download the image. */
+function useMediaQuery(query) {
+  const [matches, setMatches] = useState(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return false;
+    return window.matchMedia(query).matches;
+  });
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setTitleIndex((prevIndex) => (prevIndex + 1) % userData.titles.length);
-        setIsAnimating(false);
-      }, 500); // Half the animation duration for smooth transition
-    }, 3000);
-    
-    return () => clearInterval(interval);
-  }, [userData.titles]);
-  
-  // Smooth scroll function
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (typeof window === 'undefined' || !window.matchMedia) return undefined;
+
+    const mql = window.matchMedia(query);
+    const update = (event) => setMatches(event.matches);
+    setMatches(mql.matches);
+
+    if (mql.addEventListener) {
+      mql.addEventListener('change', update);
+      return () => mql.removeEventListener('change', update);
     }
-  };
+
+    mql.addListener(update);
+    return () => mql.removeListener(update);
+  }, [query]);
+
+  return matches;
+}
+
+const scrollToSection = (sectionId) => {
+  const element = document.getElementById(sectionId);
+  if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+function Hero({ userData, highlights, socials }) {
+  const user = userData || portfolioData.user || {};
+  const badges = highlights?.length
+    ? highlights
+    : portfolioData.heroHighlights || [];
+  const socialLinks = socials?.length
+    ? socials
+    : portfolioData.contact?.social || [];
+
+  const isPhone = useMediaQuery('(max-width: 768px)');
+
+  const titles = user.titles?.length ? user.titles : ['Full Stack Developer'];
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [swapping, setSwapping] = useState(false);
+
+  useEffect(() => {
+    if (titles.length < 2) return undefined;
+
+    const interval = setInterval(() => {
+      setSwapping(true);
+      setTimeout(() => {
+        setTitleIndex((prev) => (prev + 1) % titles.length);
+        setSwapping(false);
+      }, 350);
+    }, 3200);
+
+    return () => clearInterval(interval);
+  }, [titles.length]);
 
   return (
-    <div className="hero-container">
-      <div className="hero-content">
-        <div className="hero-flex-wrapper">
-          {/* Left side - Text content */}
-          <div className="hero-text-container">
-            {/* Greeting */}
-            <p className="hero-greeting">
-              Hi there!
-            </p>
-            
-            {/* Name with animated underline */}
-            <h1 className="hero-name">
-              I'm <span className="hero-highlight">
-                {userData.name}
+    <section id="home" className="hero">
+      <div className="hero-inner">
+        {/* ---------- Left: the pitch ---------- */}
+        <div className="hero-copy">
+          <p className={`hero-eyebrow ${swapping ? 'is-swapping' : ''}`}>
+            {titles[titleIndex]}
+          </p>
+
+          <h1 className="hero-title">
+            <span className="hero-title-lead">Hello, my name is</span>
+            <span className="hero-title-name">
+              {user.name}
+              <span className="hero-wave" role="img" aria-label="waving hand">
+                &#128075;
               </span>
-            </h1>
-            
-            {/* Animated job titles */}
-            <div className="title-animation-container">
-              <h2 
-                className={`hero-title ${isAnimating ? 'title-fade-out' : 'title-fade-in'}`}
-              >
-                {userData.titles[titleIndex]}
-              </h2>
-            </div>
-            
-            {/* Subtitle/Description */}
-            <p className="hero-subtitle">
-              {userData.subtitle}
-            </p>
-            
-            {/* Call to action buttons */}
-            <div className="hero-cta">
-              <button 
-                onClick={() => scrollToSection('realprojects')}
-                className="hero-button primary"
-              >
-                My Work
-              </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="hero-button secondary"
-              >
-                Contact Me
-              </button>
-            </div>
+            </span>
+          </h1>
+
+          <p className="hero-desc">{user.description || user.subtitle}</p>
+
+          <div className="hero-actions">
+            <button
+              type="button"
+              className="hero-btn hero-btn-primary"
+              onClick={() => scrollToSection('contact')}
+            >
+              Contact Me
+              <Send size={17} aria-hidden="true" />
+            </button>
+
+            <a
+              className="hero-btn hero-btn-dark"
+              href={resume}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Download CV
+              <Download size={17} aria-hidden="true" />
+            </a>
           </div>
-          
-          {/* Right side - Image container */}
-          <div className="hero-image-container">
-            <div className="hero-image-wrapper">
-              <img 
-                src={image1} 
-                alt={`${userData.name} - ${userData.titles[0]}`} 
-                className="hero-image"
-              />
-              {/* Decorative elements */}
-              <div className="hero-image-shape shape-1"></div>
-              <div className="hero-image-shape shape-2"></div>
-              <div className="hero-image-dots"></div>
-            </div>
+
+          {socialLinks.length > 0 && (
+            <ul className="hero-socials">
+              {socialLinks.map((item) => {
+                const Icon =
+                  SOCIAL_ICONS[String(item.platform).toLowerCase()] || Globe;
+                return (
+                  <li key={item.platform}>
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={item.platform}
+                      title={item.platform}
+                    >
+                      <Icon size={18} aria-hidden="true" />
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
+
+        {/* ---------- Right: portrait + floating proof ---------- */}
+        <div className="hero-visual">
+          <div className="hero-stage">
+            {!isPhone && (
+              <div className="hero-portrait">
+                <span className="hero-blob" aria-hidden="true" />
+                <span className="hero-arc" aria-hidden="true" />
+
+                <div className="hero-photo">
+                  <img src={user.image || heroPhoto} alt={user.name} />
+                </div>
+              </div>
+            )}
+
+            {badges.map((badge, i) => {
+              const Icon = BADGE_ICONS[badge.icon] || Briefcase;
+              return (
+                <div
+                  className={`hero-badge hero-badge-${i + 1}`}
+                  key={badge.label}
+                  style={{ '--delay': `${(0.6 + i * 0.15).toFixed(2)}s` }}
+                >
+                  <span className="hero-badge-icon" aria-hidden="true">
+                    <Icon size={16} />
+                  </span>
+                  <span className="hero-badge-value">{badge.value}</span>
+                  <span className="hero-badge-label">{badge.label}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
-      
-      {/* Scroll indicator */}
-      <div className="scroll-indicator">
-        <ChevronsDown size={28} />
-      </div>
-    </div>
+
+      <button
+        type="button"
+        className="hero-scroll"
+        onClick={() => scrollToSection('about')}
+        aria-label="Scroll to About section"
+      >
+        <ChevronDown size={24} aria-hidden="true" />
+      </button>
+    </section>
   );
-};
+}
 
 export default Hero;

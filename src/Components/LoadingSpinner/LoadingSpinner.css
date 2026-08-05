@@ -1,102 +1,188 @@
 /* LoadingSpinner.css */
 
+/* The overlay carries the same gradient the hero opens on, so the handoff
+   from loader to page is a fade rather than a colour jump. */
 .spinner-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(30, 58, 138, 0.1); /* Light blue overlay */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  inset: 0;
   z-index: 9999;
-  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(140deg, #ffffff 0%, #f4f7ff 55%, #eef3ff 100%);
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .spinner-container {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  text-align: center;
+  padding: 0 1.25rem;
+  animation: spinner-fade-in 0.45s ease both;
 }
 
-.spinner-outer {
-  width: 80px;
-  height: 80px;
-  border: 4px solid rgba(59, 130, 246, 0.2); /* Light blue border */
-  border-top: 4px solid #3b82f6; /* Blue */
-  border-radius: 50%;
-  animation: spin-outer 1.2s linear infinite;
-}
-
-.spinner-inner {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  width: 56px;
-  height: 56px;
-  border: 3px solid rgba(147, 197, 253, 0.3); /* Lighter blue border */
-  border-bottom: 3px solid #1d4ed8; /* Darker blue */
-  border-radius: 50%;
-  animation: spin-inner 0.8s linear infinite reverse;
+@keyframes spinner-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .portfolio-name {
-  margin-top: 24px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 18px;
+  margin-top: 1.9rem;
+  font-size: clamp(1rem, 3.4vw, 1.15rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #0f1e40;
+}
+
+.portfolio-caption {
+  margin-top: 0.3rem;
+  font-size: clamp(0.68rem, 2.2vw, 0.76rem);
   font-weight: 600;
-  color: #1e40af; /* Dark blue */
-  text-align: center;
-  letter-spacing: 0.5px;
-  text-shadow: 0 1px 2px rgba(30, 64, 175, 0.1);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #4a6cf7;
 }
 
-/* Animations */
-@keyframes spin-outer {
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* From Uiverse.io by dovatgabriel */
+.three-body {
+  --uib-size: 44px;
+  --uib-speed: 0.8s;
+  --uib-color: #4a6cf7;
+  position: relative;
+  display: inline-block;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  animation: spin78236 calc(var(--uib-speed) * 2.5) infinite linear;
+}
+
+.three-body__dot {
+  position: absolute;
+  height: 100%;
+  width: 30%;
+}
+
+.three-body__dot:after {
+  content: '';
+  position: absolute;
+  height: 0%;
+  width: 100%;
+  padding-bottom: 100%;
+  background-color: var(--uib-color);
+  border-radius: 50%;
+}
+
+.three-body__dot:nth-child(1) {
+  bottom: 5%;
+  left: 0;
+  transform: rotate(60deg);
+  transform-origin: 50% 85%;
+}
+
+.three-body__dot:nth-child(1)::after {
+  bottom: 0;
+  left: 0;
+  animation: wobble1 var(--uib-speed) infinite ease-in-out;
+  animation-delay: calc(var(--uib-speed) * -0.3);
+}
+
+.three-body__dot:nth-child(2) {
+  bottom: 5%;
+  right: 0;
+  transform: rotate(-60deg);
+  transform-origin: 50% 85%;
+}
+
+.three-body__dot:nth-child(2)::after {
+  bottom: 0;
+  left: 0;
+  animation: wobble1 var(--uib-speed) infinite
+    calc(var(--uib-speed) * -0.15) ease-in-out;
+}
+
+.three-body__dot:nth-child(3) {
+  bottom: -5%;
+  left: 0;
+  transform: translateX(116.666%);
+}
+
+.three-body__dot:nth-child(3)::after {
+  top: 0;
+  left: 0;
+  animation: wobble2 var(--uib-speed) infinite ease-in-out;
+}
+
+@keyframes spin78236 {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
 
-@keyframes spin-inner {
-  0% {
-    transform: rotate(360deg);
-  }
+@keyframes wobble1 {
+  0%,
   100% {
-    transform: rotate(0deg);
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-66%) scale(0.65);
+    opacity: 0.8;
   }
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .spinner-outer {
-    width: 60px;
-    height: 60px;
-    border-width: 3px;
+@keyframes wobble2 {
+  0%,
+  100% {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
   }
-  
-  .spinner-inner {
-    top: 9px;
-    left: 9px;
-    width: 42px;
-    height: 42px;
-    border-width: 2px;
+
+  50% {
+    transform: translateY(66%) scale(0.65);
+    opacity: 0.8;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .three-body {
+    --uib-size: 38px;
+  }
+
   .portfolio-name {
-    font-size: 16px;
-    margin-top: 20px;
+    margin-top: 1.5rem;
   }
 }
 
-/* Additional hover effect for the container */
-.spinner-container:hover .portfolio-name {
-  color: #1e3a8a; /* Slightly darker blue on hover */
-  transition: color 0.3s ease;
+/* The three dots keep a slow pulse so the screen never looks frozen, but the
+   orbit and the wobble stop. */
+@media (prefers-reduced-motion: reduce) {
+  .spinner-container {
+    animation: none;
+  }
+
+  .three-body {
+    animation: none;
+  }
+
+  .three-body__dot::after {
+    animation: none !important;
+    opacity: 0.85;
+  }
 }
