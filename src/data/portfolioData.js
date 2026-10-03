@@ -41,7 +41,7 @@ const portfolioData = {
       location: "Hyderabad, India",
       employmentType: "Full-time",
       startDate: "2025-07",
-      endDate: null,
+      endDate: "2026-09",
       summary:
         "Full Stack Developer on a five-product in-house suite. I take features from requirement to production: MySQL/MongoDB schema, Node.js or Django REST services, React + Material UI screens, then the Docker/Linux deploy and the CloudWatch triage that follows.",
       metrics: [
@@ -89,7 +89,7 @@ const portfolioData = {
             "A multi-participant video conferencing product built on LiveKit and WebRTC, with screen share, in-call chat and host controls.",
           contribution:
             "Built the meeting UI and the signalling integration - room lifecycle, join and leave events, and the in-call chat channel.",
-          stack: ["React", "Node.js", "LiveKit / WebRTC", "WebSockets"],
+          stack: ["React","Django", "LiveKit / WebRTC", "WebSockets"],
         },
         {
           name: "IEvalx",
