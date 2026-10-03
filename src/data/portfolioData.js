@@ -29,7 +29,7 @@ const portfolioData = {
     { value: "1+", label: "Years building production apps" },
     { value: "5", label: "In-house products shipped on" },
     { value: "40+", label: "REST endpoints integrated" },
-    { value: "2", label: "Backends in daily use (Node & Django)" },
+  
   ],
 
   experience: [
